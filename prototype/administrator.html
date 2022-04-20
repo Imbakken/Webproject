@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webproject prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navContainer">
+            <ul class="navigation-bar">
+                <li><a class="current" href="administrator.html">Administrator</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+
+            <form class="searchBox">
+                <input type="search" class="searchInput" placeholder="Search..." aria-label="Search">
+            </form>
+        </div>
+    </header>
+
+    <h1>Create new user account</h1>
+
+    <form class="createUserBox">
+        <div class="formContainer">
+            <div class="formfields">
+                <label for="create-firstname">First name</label>
+                <input type="text" id="create-firstname" required>
+            </div>
+            <div class="formfields">
+                <label for="create-middlename">Middle name</label>
+                <input type="text" id="create-middlename" required>
+            </div>
+            <div class="formfields">
+                <label for="create-surname">Surname</label>
+                <input type="text" id="create-surname" required>
+            </div>
+            <div class="formfields">
+                <label for="create-email">Email address</label>
+                <input type="email" id="create-email" required>
+            </div>
+            <div class="formfields">
+                <label for="create-education">Field of education</label>
+                <input type="text" id="create-education" required>
+            </div>
+            <div class="formfields">
+                <label for="create-degree">Degree</label>
+                <input type="text" id="create-degree" required>
+            </div>
+            <div class="formfields">
+                <label for="create-place">Place</label>
+                <input type="text" id="create-place" required>
+            </div>
+            <div class="formfields">
+                <label for="create-password">Password</label>
+                <input type="password" id="create-password" required>
+            </div>
+            <div class="signin-button">
+                <button class="signin" type="submit">Create new account</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webproject prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navigationBar">
+        <div class="navContainer">
+            <ul class="">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="current" href="signin.html">Login</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+            </ul>
+
+            <form class="searchBox">
+                <input type="search" class="searchInput" placeholder="Search..." aria-label="Search">
+            </form>
+        </div>
+    </header>
+
+    <h1>Find a second examiner for your course</h1>
+
+    <form class="signinBox">
+        <div class="formContainer">
+            <h2>Please login</h2>
+            <div class="formfields">
+                <label for="signin-input">Email address</label>
+                <input type="email" id="signin-input" required>
+            </div>
+            <div class="formfields">
+                <label for="signin-password">Password</label>
+                <input type="password" id="signin-password" required>
+            </div>
+            <div class="check-box">
+                <label for="signin-checkbox">Remember me</label>
+                <input type="checkbox" id="signin-checkbox">
+            </div>
+            <div class="formfields">
+                <a href="signup.html" class="signin-link">Create new account</a>
+                <a href="signup.html" class="signin-link">Forgot password</a>
+            </div>
+            <div class="signin-button">
+                <button class="signin" type="submit">Sign in</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
