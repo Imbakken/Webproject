@@ -23,6 +23,7 @@ h1 {
     font-size: 36px;
     text-align: center;
     padding-top: 50px;
+    padding-bottom: 20px;;
 }
 
 h2 {
@@ -86,7 +87,6 @@ h2 {
     color: #536F76;
     width: 500px;
     height: 400px;
-    padding-top: 50px;
     padding-bottom: 50px;
     border-radius: 5px;
     margin: 0 auto;
@@ -168,3 +168,34 @@ h2 {
     font-weight: bold;   
 }
 
+/* Admin page */
+
+.admin-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.admin-options li{
+    padding: 20px;
+    display: inline-block;
+}
+
+.admin-options a{
+    color: #536F76;
+    text-decoration: none;
+}
+
+.admin-options .current a{
+    font-weight: bold;  
+}
+
+.admin-options a:hover{
+    font-weight: bold;   
+}
+
+.admin-options ul{
+    list-style-type: none;
+}
