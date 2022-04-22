@@ -170,7 +170,7 @@ h2 {
 
 /* Admin page */
 
-.admin-options {
+.options {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,24 +178,75 @@ h2 {
     margin: 0 auto;
 }
 
-.admin-options li{
+.options li{
     padding: 20px;
     display: inline-block;
 }
 
-.admin-options a{
+.options a{
     color: #536F76;
     text-decoration: none;
 }
 
-.admin-options .current a{
+.options .current a{
     font-weight: bold;  
 }
 
-.admin-options a:hover{
+.options a:hover{
     font-weight: bold;   
 }
 
-.admin-options ul{
+.options ul{
     list-style-type: none;
+}
+
+/*Teachers*/
+.match-box {
+    width: 500px;
+    border: 1px solid #536F76;
+    text-align: center;
+}
+
+.match-box ul{
+    list-style-type: none;
+}
+
+.match-box-image img {
+    display: block;
+    max-width: 20%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.info {
+    padding: 20px;
+}
+
+.match-box-inner {
+    padding: 50px;
+}
+
+.request {
+        width: 200px;
+        border-radius: 5px;
+        border: none;
+        background: #B6CACD;
+        color: #536F76;
+        font-size: 20px;
+        height: 50px;
+}
+
+.teachers-grid {
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.removed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 100px;
 }
