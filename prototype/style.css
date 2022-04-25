@@ -152,6 +152,7 @@ h2 {
     display: block;
     max-width: 60%;
     height: auto;
+    transform: translateY(45px);
     margin: 0 auto;
 }
 
