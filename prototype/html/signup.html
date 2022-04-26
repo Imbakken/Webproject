@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webproject prototype</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../schemas/buttons.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
             </div>
             <div class="formfields">
                 <label for="signup-middlename">Middle name</label>
-                <input type="text" id="signup-middlename" required>
+                <input type="text" id="signup-middlename">
             </div>
             <div class="formfields">
                 <label for="signup-surname">Surname</label>
@@ -61,7 +62,7 @@
                 <input type="password" id="signup-password" required>
             </div>
             <div class="signin-button">
-                <button class="signin" type="submit">Create new account</button>
+                <button onclick="location.href='http://127.0.0.1:5501/prototype/html/index.html'" id="signin" type="submit">Create new account</button>
             </div>
         </div>
     </form>
