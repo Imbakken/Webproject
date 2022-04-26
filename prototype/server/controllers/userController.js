@@ -4,8 +4,8 @@ const createUser = async (req, res) => {
   try {
     const user = await User.create({
         name: req.body.name,
-        email: req.body.name,
-        password: req.body.password 
+        email: req.body.email,
+        password: req.body.password,
     });
     res.status(201).json(user);
   } catch (error) {
@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
       { _id: req.params.id },
       {
         name: req.body.name,
-        email: req.body.name,
+        email: req.body.email,
         password: req.body.password,
       }
     );
