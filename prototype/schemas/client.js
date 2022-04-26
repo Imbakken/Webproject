@@ -34,3 +34,5 @@ async function updateUser(firstName, middleName, surName, emailAdress, fieldOfEd
       return dataRecieved;
 
 }      
+
+async function deleteUser(firstName)
