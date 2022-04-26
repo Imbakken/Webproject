@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webproject prototype</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <header class="navigationBar">
+        <div class="navContainer">
+            <ul class="">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signin.html">Login</a></li>
+                <li><a class="current" href="signup.html">Sign up</a></li>
+            </ul>
+
+            <form class="searchBox">
+                <input type="search" class="searchInput" placeholder="Search..." aria-label="Search">
+            </form>
+        </div>
+    </header>
+
+    <h1>Create a new job advertisement</h1>
+
+    <form class="signinBox">
+        <div class="formContainer">
+            <div class="formbox">
+                <div class="formfields">
+                    <label for="createjob-course">Course</label>
+                    <input type="text" id="createjob-course" required>
+                </div>
+                <div class="formfields">
+                    <label for="createjob-code">Coursename and code</label>
+                    <input type="text" id="createjob-code" required>
+                </div>
+                <div class="formfields">
+                    <label for="createjob-studytype">Study type</label>
+                    <input type="text" id="createjob-studytype" required>
+                </div>
+                <div class="formfields">
+                    <label for="createjob-examination">Examination form</label>
+                    <input type="text" id="createjob-examination" required>
+                </div>
+                <div class="formfields">
+                    <label for="createjob-date">Examination date</label>
+                    <input type="text" id="createjob-date" required>
+                </div>
+                <div class="formfields">
+                    <label for="createjob-deadline">Deadline for announcement of grades</label>
+                    <input type="text" id="createjob-deadline" required>
+                </div>
+                <div class="formfields">
+                    <label for="createjob-place">Place</label>
+                    <input type="text" id="createjob-place" required>
+                </div>
+            </div>
+            <div class="createjob-button">
+                <button class="createjob" type="submit">Create job announcement</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
