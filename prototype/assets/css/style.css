@@ -79,18 +79,31 @@ h2 {
     font-size: 15px;
 }
 
+.logo img {
+    width: auto;
+    height:400px;
+    padding: 15px;
+}
+
+.smallogo img {
+    width: auto;
+    height:40px;
+    padding: 15px;
+}
+
 /*Forms*/
 
 .formContainer {
     display: flex;
 	flex-direction: column;
+    align-items: center;
     color: #536F76;
-    width: 500px;
-    height: 400px;
     padding-bottom: 50px;
     border-radius: 5px;
     margin: 0 auto;
-
+}
+.formbox {
+    width: 600px;
 }
 
 .formfields {
@@ -142,19 +155,25 @@ h2 {
 }
 
 /* Main page */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .illustration {
     position: absolute;
     bottom: 10%;
 }
 
+
 .illustration img{
     display: block;
     max-width: 50%;
     height: auto;
-    transform: translateY(42px);
     margin: 0 auto;
 }
+
 
 .link-container {
     text-align: center;
@@ -231,8 +250,8 @@ h2 {
         width: 200px;
         border-radius: 5px;
         border: none;
-        background: #B6CACD;
-        color: #536F76;
+        background: #A3B1B4;
+        color: black;
         font-size: 20px;
         height: 50px;
 }
@@ -250,4 +269,23 @@ h2 {
     flex-wrap: wrap;
     margin: 0 auto;
     padding: 100px;
+}
+
+
+.createjob {
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    background: #A3B1B4;
+    color: black;
+    font-size: 20px;
+    height: 50px;
+}
+
+.createjob-button {
+    padding: 30px;
+}
+
+.signin-button {
+    padding: 30px;
 }
