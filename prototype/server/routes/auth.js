@@ -1,3 +1,4 @@
+/*
 const router = require('express').Router();
 const jwt = require('jsonwebtoken')
 
@@ -27,3 +28,5 @@ router.post('/signup',[
     })
 
 module.exports= router 
+
+*/
