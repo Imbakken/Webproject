@@ -79,16 +79,15 @@ h2 {
     font-size: 15px;
 }
 
-.logo img {
+.smallogo img {
     width: auto;
-    height:400px;
+    height:30px;
     padding: 15px;
 }
 
-.smallogo img {
-    width: auto;
-    height:40px;
-    padding: 15px;
+.nav {
+    display: flex;
+    align-items: center;
 }
 
 /*Forms*/
@@ -163,11 +162,17 @@ h2 {
     align-items: center;
 }
 
+.logo img {
+    width: auto;
+    height:400px;
+    padding: 15px;
+}
+
+/*
 .illustration {
     position: absolute;
     bottom: 10%;
 }
-
 
 .illustration img{
     display: block;
@@ -175,7 +180,7 @@ h2 {
     height: auto;
     margin: 0 auto;
 }
-
+*/
 
 .link-container {
     text-align: center;
