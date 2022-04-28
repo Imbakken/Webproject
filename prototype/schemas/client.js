@@ -35,4 +35,6 @@ async function updateUser(firstName, middleName, surName, emailAdress, fieldOfEd
 
 }      
 
-async function deleteUser(firstName)
+async function deleteUser(firstName){
+      var data
+}
