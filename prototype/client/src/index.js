@@ -1,12 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom/client"; //since react 18
 import './index.css';
 import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './utils/AuthContextProvider';
 
+//since react 18
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>, document.getElementById('root')
+// 1) install router and wrap app with BrowserRouter
+root.render(
+  <React.StrictMode>
+    <AuthProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
+  </React.StrictMode>
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
