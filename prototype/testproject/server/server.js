@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const dbConfig = require("../server/config/db.config");
+const dbConfig = require("./config/db.config");
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-const db = require("../server/models/");
+const db = require("./models");
 const Role = db.role;
 
 db.mongoose
@@ -39,8 +39,8 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require("../server/routes/auth.routes")(app);
-require("../server/routes/user.routes")(app);
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
