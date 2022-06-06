@@ -30,6 +30,17 @@ After the completion of this course, the students will be able to reflect on the
 * Project work
 * Academic supervision, tutoring and iterative guidance
 
+## :computer: Setup 
+To install the application follow these instructions.
+
+- Download the files from GitHub.
+- Open the project folder in an external editor. We have used Visual Studio Code during development.
+- Open a terminal in the root folder of the project and run npm install to install the project dependencies.
+- Run the npm start command to start the application.
+
+## :date: Project
+Spring semester 2022
+
 ### :unlock: Log in 
 We have made some testusers to test the system. 
 #### Anonymous user: 
