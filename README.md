@@ -12,7 +12,7 @@ As long it is practically possible, the project assignments will be given by the
 ### Knowledge:
 The aim is for the students to be better web developers with practical experience in the industry, as well as typical approaches to new, and anticipated future methods and technologies (including web components) for development of active web solutions.
 
-### :dart: Skills:
+### Skills:
 After completing this course, the students will be able to: 
 * Use JavaScript frameworks as a tool for solving complex problems. 
 * Communicate with relevant user groups and map their wishes and needs. 
