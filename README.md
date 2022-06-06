@@ -50,4 +50,4 @@ password: password123
 ### Authors :pencil:
 - [Hedda Olimb](https://github.com/heddaoli)
 - [Ida Marie Joakimsen Bakken](https://github.com/Imbakken)
-- [Richard Langtinn]()
+- [Richard Langtinn](https://github.com/rlangtinn95)
