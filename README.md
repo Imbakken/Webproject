@@ -47,7 +47,7 @@ email: admin@gmail.com
 <br>
 password: password123
 
-### Authors :pencil:
+## :woman: :woman: :man: Authors 
 - [Hedda Olimb](https://github.com/heddaoli)
 - [Ida Marie Joakimsen Bakken](https://github.com/Imbakken)
 - [Richard Langtinn](https://github.com/rlangtinn95)
