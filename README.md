@@ -1,11 +1,11 @@
 # IDG2671 Webprosjekt 
-### Group 1: Richard Langtinn, Hedda Olimb and Ida Marie Joakimsen Bakken
+### Group 1: Richard Langtinn, Hedda Olimb and Ida Marie Joakimsen Bakken  :woman: :woman: :man:
 ### View the [Project here](Our link here)
 
-## About the project
+## :pushpin: About the project
 The goal of the project is to create a system where all employees in the college / university sector will be able to find examiners for upcoming exams. Since the government has decided that there will be a 2-sensor solution. Today's solution is to call around to potential sensors and spend a lot of unnecessary time on it.
 
-## :pencil2: Course Content
+## :closed_book: Course Content
 As long it is practically possible, the project assignments will be given by the companies the study programme is cooperating with or by internal product owners. Students, over different meetings with the product owner, will have to go through the different stages or phases of the development of a web project, going from the conceptualisation of the problem and its solution to its implementation and deployment in a production environment. Topics This is a practical course that supplements or continues from the ordinary course portfolio in the programme and, thus, most of the background knowledge has been introduced in previous courses. However, students will have to learn on their own one of the top trending JavaScript frameworks suitable for solving the problem presented by the product owner.
 
 ## :pencil2: Learning Outcome
@@ -22,12 +22,43 @@ After completing this course, the students will be able to:
 * Communicate with relevant user groups and map their wishes and needs. 
 * Apply insights from user studies to design a good and customised product. 
 
-### General competence:
+### :wrench: General competence:
 After the completion of this course, the students will be able to reflect on the pros and cons of different architectures and web technologies. They will have acquired a general competence on analysing the needs and the context of a problem conceptualising a solution that provides a detailed description of the design and the technological background for fulfilling the needs and constrains of the project using front-end technologies for implement a MVP They will also be able to work within a collaborative environment being part of a team disseminate and communicate the results of their projects
 
-## :pencil2: Learning methods and activities
+## :pencil: Learning methods and activities
 * Meetings with product owner
 * Project work
 * Academic supervision, tutoring and iterative guidance
 
+## :computer: Setup 
+To install the application follow these instructions.
 
+- Download the files from GitHub.
+- Open the project folder in an external editor. We have used Visual Studio Code during development.
+- Open a terminal in the root folder of the project and run npm install to install the project dependencies.
+- Run the npm start command to start the application.
+
+## :date: Project
+Spring semester 2022
+
+### :unlock: Log in 
+We have made some testusers to test the system. 
+#### Anonymous user: 
+email: anonymous@gmail.com
+</br>
+password: password123
+
+#### Employee user:
+email: employee@gmail.com
+<br>
+password: password123
+
+#### Administrator user: 
+email: admin@gmail.com
+<br>
+password: password123
+
+## :star: Authors 
+- [Hedda Olimb](https://github.com/heddaoli)
+- [Ida Marie Joakimsen Bakken](https://github.com/Imbakken)
+- [Richard Langtinn](https://github.com/rlangtinn95)
