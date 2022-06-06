@@ -13,13 +13,13 @@ class DisplayJobs extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
+            coursecode: '',
             jobs: [],
             columns: [],
             isLoading: false,
             boxHover: '',
-            sortType: 'nextwater',
-            updatejob: false,
+            sortType: 'place',
+            updateJob: false,
             updateId: ''
         }
         this.trueDisplay = this.trueDisplay.bind(this)

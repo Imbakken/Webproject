@@ -8,14 +8,15 @@ class JobsInsert extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            building: '',
-            room: '',
-            waterschedule: '',
-            lastwatered: '',
-            fertilizer: '',
-            fertilizerschedule: '',
-            lastfertilized: ''
+            course: '',
+            coursecourse: '',
+            coursecode: '',
+            studytype: '',
+            examform: '',
+            date: '',
+            deadline: '',
+            place: '',
+            tags: '',
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,8 +34,8 @@ class JobsInsert extends Component {
 
     }
 
-    deleteJob(id, name) {
-        if(window.confirm(`Do you want to delete the job ${name} permanently?`)){
+    deleteJob(id, coursename) {
+        if(window.confirm(`Do you want to delete the job ${coursename} permanently?`)){
             api.deleteJobById(this.context.generateHeaders(), id);
             window.location.reload();
         }
@@ -43,9 +44,9 @@ class JobsInsert extends Component {
     //adding job by sending the data to the back end
     handleSubmit = async (event) => {
         event.preventDefault();
-        const { name, building, room, waterschedule, lastwatered, fertilizer,  fertilizerschedule, lastfertilized } = this.state;
+        const { course, coursecourse, coursecode, studytype, examform, date, deadline, place } = this.state;
 
-        const payload = { name, building, room, waterschedule, lastwatered, fertilizer, fertilizerschedule, lastfertilized };
+        const payload = { course, coursecourse, coursecode, studytype, examform, date, deadline, place };
 
         if(this.validateInput() === 'fillAllFields'){
             window.alert('Please fill out all the input fields.');
@@ -57,14 +58,15 @@ class JobsInsert extends Component {
                 window.alert(`Job inserted successfully!`)
                 
                     this.setState({
-                        name: '',
-                        building: '',
-                        room: '',
-                        waterschedule: '',
-                        lastwatered: '',
-                        fertilizer: '',
-                        fertilizerschedule: '',
-                        lastfertilized: ''
+                        course: '',
+                        coursename: '',
+                        coursecode: '',
+                        studytype: '',
+                        examform: '',
+                        date: '',
+                        deadline: '',
+                        place: '',
+                        tags: '',
                     });
                     window.location.reload();
                 }
@@ -74,7 +76,7 @@ class JobsInsert extends Component {
     }
 
     validateInput(){
-        if(!this.state.name || !this.state.building || !this.state.room || !this.state.waterschedule || !this.state.lastwatered || !this.state.fertilizer || !this.state.fertilizerschedule || !this.state.lastfertilized ){
+        if(!this.state.course || !this.state.coursename || !this.state.coursecode || !this.state.studytype || !this.state.examform || !this.state.date || !this.state.deadline || !this.state.place || !this.state.tags  ){
             return 'fillAllFields';
         }
         else{
@@ -85,90 +87,110 @@ class JobsInsert extends Component {
     render() {
         return (
             <>
-                <div className='create-user'>
+                <div className='formbox'>
                     <h2>Add Job</h2>
+                    <div className='form'>
                     <form onSubmit={this.handleSubmit}>
-                        <label>Name:
+                        <label>Course:
                             <input
-                            name='name'
-                            value={this.state.name}
+                            name='course'
+                            value={this.state.course}
                             onChange={this.handleInputChange}
                             type='text'
-                            placeholder='Job name'/>
+                            placeholder='Link to the course'/>
                         </label>
 
-                        <label>Building:
-                            <select name='building' value={this.state.building} onChange={this.handleInputChange}>
+                        <label>Course name:
+                            <input
+                            name='coursename'
+                            value={this.state.coursename}
+                            onChange={this.handleInputChange}
+                            type='text'
+                            placeholder='Course name'/>
+                        </label>
+
+                        <label>Coursecode:
+                            <input
+                            name='coursecode'
+                            value={this.state.coursecode}
+                            onChange={this.handleInputChange}
+                            type='text'
+                            placeholder='Coursecode'/>
+                        </label>
+
+                        <label>Studytype:
+                        <select name='studytype' value={this.state.studytype} onChange={this.handleInputChange}>
                                 <option defaultValue=''></option>
-                                <option value='K-bygget'>K-bygget</option>
-                                <option value='A-bygget'>A-bygget</option>
-                                <option value='G-bygget'>G-bygget</option>
-                                <option value='B-bygget'>B-bygget</option>
-                                <option value='S-bygget'>S-bygget</option>
-                                <option value='H-bygget'>H-bygget</option>
+                                <option value='Bachelor'>Bachelor</option>
+                                <option value='Master'>Master</option>
+                                <option value='PhD'>Phd</option>
+                                <option value='One year programme'>One year programme</option>
+                                <option value='Other'>Other</option>
                             </select>
                         </label>
 
-                        <label>Room:
+                        <label>Exam form:
                             <input
-                            name='room'
-                            value={this.state.room}
+                            name='examform'
+                            value={this.state.examform}
                             onChange={this.handleInputChange}
                             type='text'
-                            placeholder='Room'/>
+                            placeholder='Exam form'/>
                         </label>
 
-                        <label>Water interval in days:
-                            <input
-                            name='waterschedule'
-                            value={this.state.waterschedule}
-                            onChange={this.handleInputChange}
-                            type='number'
-                            />
-                        </label>
-
-                        <label>Last watered:
-                            <input
-                            name='lastwatered'
-                            value={this.state.lastwatered}
-                            onChange={this.handleInputChange}
-                            type='date'
-                            placeholder='Last watered'/>
-                        </label>
-
-                        <label>Fertilizer:
-                            <select name='fertilizer' value={this.state.fertilizer} onChange={this.handleInputChange}>
-                                <option defaultValue=''></option>
-                                <option value='Dirt'>Dirt</option>
-                                <option value='Compost'>Compost</option>
-                                <option value='Calcium'>Calcium</option>
-                            </select>
-                        </label>
-
-                        <label>Fertilizing interval in days:
-                            <input
-                            name='fertilizerschedule'
-                            value={this.state.fertilizerschedule}
-                            onChange={this.handleInputChange}
-                            type='number'
-                            />
-                        </label>
-
-                        <label>Last fertilized:
-                            <input
-                            name='lastfertilized'
-                            value={this.state.lastfertilized}
-                            onChange={this.handleInputChange}
-                            type='date'
-                            placeholder='Last fertilized'/>
-                        </label>
-
+                        <label>Exam date:
                         <input
-                        className='submitButton'
-                        type='submit'
-                        value='Add job'
-                        />
+                            name='date'
+                            value={this.state.date}
+                            onChange={this.handleInputChange}
+                            type='date'
+                            placeholder='Exam date'/>
+                        </label>
+
+                        <label>Examination deadline:
+                            <input
+                            name='deadline'
+                            value={this.state.deadline}
+                            onChange={this.handleInputChange}
+                            type='date'
+                            placeholder='Examination deadline'/>
+                            
+                        </label>
+
+                        <label>Place:
+                            <input
+                            name='place'
+                            value={this.state.place}
+                            onChange={this.handleInputChange}
+                            type='text'
+                            placeholder='Place'/>
+                        </label>
+
+                        <label>Tag:
+                        <select name='tags' value={this.state.tags} onChange={this.handleInputChange}>
+                                <option defaultValue=''></option>
+                                <option value='Aesthetics, Fine Art and Music Studies'>Aesthetics, Fine Art and Music Studies</option>
+                                <option value='Econmics, Management and Administration'>Econmics, Management and Administration</option>
+                                <option value='Fisheries'>Fisheries</option>
+                                <option value='History, Religion, Culture and Ideas'>History, Religion, Culture and Ideas</option>
+                                <option value='Information Technology og informatics'>Information Technology og informatics</option>
+                                <option value='Languages ans Literature'>Languages ans Literature</option>
+                                <option value='Mathematics and Natural Science'>Mathematics and Natural Science</option>
+                                <option value='Media Studies and Communication'>Media Studies and Communication</option>
+                                <option value='Medicine, Health and Social Studies'>Medicine, Health and Social Studies</option>
+                                <option value='Pedagogics'>Pedagogics</option>
+                                <option value='Social Sciences and Psychology'>Social Sciences and Psychology</option>
+                                <option value='Sport Sciences'>Sport Sciences</option>
+                                <option value='Teacher Education'>Teacher Education</option>
+                                <option value='Technology, Engineering and Architecture'>Technology, Engineering and Architecture</option>
+                            </select>
+                        </label>
+                        
+                        <div className="button">
+                        <input className='submitButton' type='submit' value='Add job' id='button-primary' />
+                        </div>
                     </form>
+                    </div>
                 </div>
             </>
         );

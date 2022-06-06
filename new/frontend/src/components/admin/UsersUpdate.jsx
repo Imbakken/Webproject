@@ -66,7 +66,9 @@ class UsersUpdate extends Component {
 
         return (
             <>
+            <div className='formbox'>
             <h2>Edit user:</h2>
+            <div className='form'>
                     <form onSubmit={this.handleUpdateUser}>
                         
                         <label>First Name:</label>
@@ -104,10 +106,14 @@ class UsersUpdate extends Component {
                             <option value='admin'>Admin</option>
                         </select>
                         </label>
-                        
-                        <input className='submit-class' type="submit" value="Update user" />
+
+                        <div className="button">
+                        <input className='submit-class' type="submit" value="Update user" id="button-primary" />
+                        </div>
                     </form>
+                </div>
                     <Button href={`/adminpage`} id="cancel">Cancel</Button>
+            </div>
                     </>
         )
     }

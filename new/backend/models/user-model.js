@@ -26,6 +26,16 @@ const User = new Schema({
         enum: ['employee', 'admin', 'anonymous'],
         default: 'anonymous'
     },
+    description: {
+        type: String,
+    },
+    workplace: {
+        type: String,
+        required: true,
+    },
+    experience: {
+        type: String
+    },
     resetPasswordToken: {
         type: String,
     },

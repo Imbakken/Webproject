@@ -1,24 +1,18 @@
-import { Route, Navigate } from "react-router-dom";
-import { AuthConsumer } from '../utils/Auth';
+import React from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { AuthContext } from "../utils/Auth";
 
-//checking if user is admin with isAdminFunc and rendering component if true
-//else redirect to /profile
-const AdminRoute = ({ component: Component, ...rest }) => (
-  <AuthConsumer>
-    {({ isAdminFunc }) => (
-      <Route {...rest} render={({ props }) =>
-        isAdminFunc() ? (
-            <Component {...props} />
-          ) : (
-            <Navigate
-              to={{
-                pathname: "/profile"
-              }}
-            />
-          )}
-        />
-      )}
-  </AuthConsumer>
-);
+const AdminRoute = ({ children }) => {
+let auth = React.useContext(AuthContext);
+  let location = useLocation();
 
-export default AdminRoute;
+  return (
+    <>
+      {auth.isLoading && <p>Loading</p>}
+      {auth.isAdmin && (children ? children : <Outlet />)}
+      {!auth.isLoading && !auth.isAdmin && <Navigate to="/" state={{ from: location }} replace />}
+    </>
+  )
+}
+
+export default AdminRoute; 

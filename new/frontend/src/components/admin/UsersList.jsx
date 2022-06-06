@@ -59,11 +59,9 @@ class UsersList extends Component {
         //rendering only employees and anonymous users
         return users.map((users, index) => {
            return <div id="userCard" key={index}>
-                <h5>{users.name} {users.surname}</h5>
-                <p>Email: </p>
-                <p>{users.email}</p>
-                <p>Role: </p>
-                <p>{users.role}</p>
+                <h3>{users.name} {users.surname}</h3>
+                <p><strong>Email:</strong> {users.email}</p>
+                <p><strong>Role:</strong> {users.role}</p>
                 
                 <Button
                     id="update"

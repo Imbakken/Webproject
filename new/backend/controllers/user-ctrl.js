@@ -41,18 +41,13 @@ createJob = async (req, res) => {
         });
     }
     
-    const { name, building, room, waterschedule, lastwatered, fertilizer, fertilizerschedule, lastfertilized } = req.body;
-    const flags = 0;
+    const { course, coursename, coursecode, studytype, examform, date, deadline, place, tags } = req.body;
 
-    let checkName = await Job.findOne({ name, building, room, waterschedule, lastwatered, fertilizer, fertilizerschedule, lastfertilized });
+    let checkCoursecode = await Job.findOne({ coursecode });
 
-    const date = lastwatered.split('-');
-    const current = new Date(date[0], date[1] - 1, date[2], 0, 0, 0, 0);
-    const nextwatering = current.setDate(current.getDate() + parseInt(waterschedule));
-    const nextfertilizing = current.setDate(current.getDate() + parseInt(fertilizerschedule));
-    if (!checkName) {
+    if (!checkCoursecode) {
 
-        const job = await Job.create({ name, building, room, waterschedule, lastwatered, nextwatering, fertilizer, flags, fertilizerschedule, lastfertilized, nextfertilizing });
+        const job = await Job.create({ course, coursename, coursecode, studytype, examform, date, deadline, place, tags });
 
         return res.status(201).json({
             message: 'Job added successfully',
@@ -99,18 +94,8 @@ updateUser = async (req, res) => {
 updateJob = async (req, res) => {
     const body = req.body;
     const id = req.params.id;
-    
-    let dateWater = body.lastwatered.split('-');
-    let dayWater = dateWater[2].split('T');
-    const currentWater = new Date(dateWater[0], dateWater[1] - 1, dayWater[0], 0);
-    const nextwaterString = currentWater.setDate(currentWater.getDate() + parseInt(body.waterschedule));
-    
-    let dateFertilize = body.lastfertilized.split('-');
-    let dayFertilize = dateFertilize[2].split('T');
-    const currentFertilize = new Date(dateFertilize[0], dateFertilize[1] - 1, dayFertilize[0], 0);
-    const nextfertilizingString = currentFertilize.setDate(currentFertilize.getDate() + parseInt(body.fertilizerschedule));
 
-    const update = { name: body.name, building: body.building, room: body.room, waterschedule: body.waterschedule, lastwatered: body.lastwatered, nextwatering: nextwaterString, fertilizer: body.fertilizer, flags: body.flags, fertilizerschedule: body.fertilizerschedule, lastfertilized: body.lastfertilized, nextfertilizing: nextfertilizingString };  
+    const update = { course: body.course, coursename: body.coursename, coursecode: body.coursecode, studytype: body.studytype, examform: body.examform, date: body.date, deadline: body.deadline, place: body.place, tags: body.tags };  
 
     if (body) {
         await Job.updateOne({ _id: id }, { $set: update}, function (err, job) {

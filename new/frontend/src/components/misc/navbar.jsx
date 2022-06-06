@@ -23,10 +23,10 @@ function Nav(props) {
                       {!props.isAuth && <li>
                         <Link to="/login">Login</Link>
                       </li>}
-                      {props.isAdmin && <li>
+                      {props.isEmployee && <li>
                         <Link to="/job-overview">Job overview</Link>
                       </li>}
-                      {props.isAdmin&& <li>
+                      {props.isEmployee && <li>
                         <Link to="/add-job">Add jobs</Link>
                       </li>}
                       {props.isAdmin && <li>
@@ -35,11 +35,14 @@ function Nav(props) {
                       {props.isAuth && <li>
                         <Link to="/login" onClick={props.handleLogOut}>Log out</Link>
                       </li>}
-                      {props.isAuth &&
-                    <ActiveUser />}
+                      <div className="currentuser">
+                      {props.isAuth && <li>
+                        <ActiveUser />
+                      </li>}
+                      </div>
                     </ul>
                     </div>
-                    <form class="searchBox">
+                    <form className="searchBox">
                       <input type="search" className="searchInput" placeholder="Search..." aria-label="Search"></input>
                     </form>
             </div>

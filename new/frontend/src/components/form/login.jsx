@@ -58,12 +58,12 @@ class Login extends Component {
                         <input required name="email" type="email" value={this.state.email} onChange={this.handleInputChange}/>
                         </label>
                     </div>
-                    <div class="formfields">
+                    <div className="formfields">
                         <label>Password: 
                         <input required name="password" type="password" value={this.state.password} onChange={this.handleInputChange}/>
                         </label>
                     </div>
-                    <div class="button">
+                    <div className="button">
                     <input type="submit" value="Log in" id="button-primary" />
                     </div>
                     {showError && (
@@ -73,7 +73,7 @@ class Login extends Component {
                             </p>
                         </div>
                     )}
-                    <div class="formlinks">
+                    <div className="formlinks">
                     <p><Link to="/signup">Sign Up</Link></p>
                     <p><Link to="/forgotpassword">Forgot password?</Link></p>
                     </div>

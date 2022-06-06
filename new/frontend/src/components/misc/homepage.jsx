@@ -1,19 +1,24 @@
+import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 import BigLogo from "../../assets/illustrations/logo.png";
 
 //footer component with ntnu logo and group number
-export default function Footer () {
-    return (
-        <div class="main-content">
-        <h1>Find a second examiner for your course</h1>
+class Homepage extends Component{
+   render() {
+        return (
+                <div className="main-content">
+                <h1>Find a second examiner for your course</h1>
 
-        <div class="link-container">
-            <a href="/login">Please login to continue</a>
-        </div>
+                <div className="link-container">
+                <Link to="/login">Please login to continue</Link>
+                </div>
 
-        <div class="logo">
-            <img src={BigLogo} alt="Logo"></img>
-        </div>
+                <div className="logo">
+                    <img src={BigLogo} alt="Logo"></img>
+                </div>
 
-    </div>
-    )
+            </div>
+            )
+    }
 }
+export default Homepage;

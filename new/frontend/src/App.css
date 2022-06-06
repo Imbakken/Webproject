@@ -29,7 +29,7 @@ h2 {
     color: #536F76;
     font-size: 28px;
     text-align: center;
-    padding-top: 30px;
+    margin: 30px;
 }
 
 h3 {
@@ -42,13 +42,13 @@ h3 {
 /*header*/
 .navContainer {
     background-color: white;
-    height: 60px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    padding-right: 5%;
-    padding-left: 5%;
+    padding-right: 15px;
+    padding-left: 15px;
     border-bottom: 1px solid #536F76;
 }
 
@@ -75,7 +75,7 @@ h3 {
 }
 
 .navContainer input {
-    width: 300px;
+    width: 10%px;
     height: 30px;
     color: #536F76;
     border: 1px solid #536F76;
@@ -86,7 +86,7 @@ h3 {
 
 .smallogo img {
     width: auto;
-    height:40px;
+    height:50px;
     padding: 15px;
 }
 
@@ -98,6 +98,10 @@ h3 {
 .src-logout {
     display: flex;
     align-items: center;
+}
+
+.currentuser {
+    font-weight: bold;
 }
 
 /*Forms*/
@@ -114,6 +118,16 @@ h3 {
 }
 
 input {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+select {
+    background: #fff;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     box-sizing: border-box;
@@ -166,7 +180,6 @@ input {
     height:400px;
     padding: 15px;
 }
-
 
 .illustration {
     position: absolute;
@@ -329,3 +342,48 @@ input {
     color: #536F76;
 }
 
+
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px;
+    text-align: center;
+    margin: 10px;
+}
+
+#userCard {
+    border-top: 1px solid grey;
+}
+
+/* statuscard */
+.status-card a {
+    color: #536F76;
+}
+
+.status-card a:hover{
+    font-weight: bold;
+}
+
+/* footer */
+
+footer {
+    background-color: #536F76;
+    width: 100%;
+    margin: 0;
+    margin-top: auto;
+    box-shadow: 0 50vh 0 50vh #536F76;
+    text-align: center;
+}
+
+footer p {
+    color: #fff;
+    font-size: 18px;
+}
+
+footer img {
+    max-width: 20%;
+    margin: 1%;
+  }

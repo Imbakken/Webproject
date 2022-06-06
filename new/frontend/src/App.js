@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 
-import Projectinfo from "./components/misc/project-info/project-info.jsx";
+import Projectinfo from "./components/misc/project-info.jsx";
 import Joboverview from "./components/jobs/job-overview";
 import Jobpage from "./components/jobs/job-page";
 import Login from "./components/form/login";
@@ -14,25 +14,33 @@ import AdminRoute from './routes/AdminRoute';
 import ForgotPassword from './components/form/forgot-password';
 import ResetPassword from './components/form/reset-password';
 import { AuthConsumer } from './utils/Auth';
+import { AuthContext } from './utils/Auth';
 import UpdateSelf from './components/employee/UpdateSelf';
 import UserProfile from './components/employee/UserProfile';
 import JobsInsert from './components/jobs/JobsInsert';
 import UsersInsert from './components/admin/UsersInsert';
 import PageNotFound from './components/misc/PageNotFound';
 import Home from './components/misc/homepage';
+import StatusCard from './components/misc/statuscard';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.form = React.createRef();
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+  static contextType = AuthContext;
 
   render() {
 
     return (
       <div className="App">
         <AuthConsumer>
-          {({ isAuth, isAdmin }) => (
+          {({ isAuth, isEmployee, isAdmin }) => (
             <>
-          <div className="App">
-          <header className="App-header">
-            <Nav isAuth={ isAuth } isAdmin= {isAdmin} />
+            <header className="App-header">
+              <Nav isAuth={ isAuth } isEmployee={ isEmployee } isAdmin= {isAdmin} handleLogOut={this.handleLogOut} />
             </header>
             <main>
               <Routes>
@@ -46,27 +54,39 @@ class App extends Component {
               {/* Private routes only for logged in users */}
               <Route element={<PrivateRoute />}>
                   <Route path="/profile" element = {<UserProfile />} />
+              </Route>
+              <Route element={<PrivateRoute />}>
                   <Route path="/profile/update" element = {<UpdateSelf />} />
+              </Route>
+              <Route element={<PrivateRoute />}>
                   <Route path="/job-overview" element = {<Joboverview/>}/>
+              </Route>
+              <Route element={<PrivateRoute />}>
                   <Route path="/job-page/:id" element = {<Jobpage/>}/>
+              </Route>
+             <Route element={<PrivateRoute />}>
+                  <Route path="/add-job" element={<JobsInsert />}  />
               </Route>
               
               {/* Private route only for admins */}
-              <Route element={<AdminRoute />}>
-                  <Route path="/add-job" element={<JobsInsert />}  />
+              <Route element={<AdminRoute/>}>
                   <Route path="/adminpage" element={<Admin />}  />
               </Route>
               <Route path="/notfound" element={<PageNotFound /> } />
-              
+              <Route path="/403" element={<StatusCard statusCode={403} statusText="Forbidden" />} />
+              <Route path="/404" element={<StatusCard statusCode={404} statusText="Page Not Found" />} />
               </Routes>
             </main>
             <Footer />
-          </div>
         </>
         )}
         </AuthConsumer>
       </div>
     );
+  }
+  handleLogOut () {
+    this.context.logout();
+    window.location.href = `/login`;
   }
 }
 

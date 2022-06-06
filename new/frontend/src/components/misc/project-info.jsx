@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import Hedda from "../../../assets/illustrations/hedda2.png";
-import Richard from "../../../assets/illustrations/richard.png";
-import Ida from "../../../assets/illustrations/ida2.png";
-import { AuthContext } from '../../../utils/Auth';
-//import './project-info.css';
-
+import Hedda from "../../assets/illustrations/hedda2.png";
+import Richard from "../../assets/illustrations/richard.png";
+import Ida from "../../assets/illustrations/ida2.png";
 
 class Projectinfo extends Component {
-    static contextType = AuthContext;
 
     render() {
         return (
             <div id="project">
                  <h1>About the page</h1>
-    <div class="about">
-        <div class="about-container">
+    <div className="about">
+        <div className="about-container">
             <p>In this project, we have created a meeting place where teachers can find a second examiner for their
                 course.
                 After logging in, teachers have the opportunity to create a profile, then post a job advertisement,
@@ -33,11 +28,10 @@ class Projectinfo extends Component {
                 modify user accounts for teachers.</p>
 
             <h2>We have used different tools for developing our website.</h2>
-            <div class="tools-list">
-                <div class="tools-programming">
+            <div className="tools-list">
+                <div className="tools-programming">
                     <h3>Programming languages</h3>
-                    <ul class="tool">
-                        <li>HTML</li>
+                    <ul className="tool">
                         <li>CSS</li>
                         <li>JavaScript</li>
                         <li>Node.js</li>
@@ -46,19 +40,19 @@ class Projectinfo extends Component {
                         <li>React</li>
                     </ul>
                 </div>
-                <div class="tools-design">
+                <div className="tools-design">
                     <h3>Design tool</h3>
-                    <ul class="tools">
+                    <ul className="tools">
                         <li>Figma</li>
-                        <li>InDesign</li>
-                        <li>Illustrator</li>
+                        <li>Adobe InDesign</li>
+                        <li>Adobe Illustrator</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="aboutus-container">
-            <div class="personalia-container">
-                <div class="personalia-img">
+        <div className="aboutus-container">
+            <div className="personalia-container">
+                <div className="personalia-img">
                     <img src={Hedda} alt="Picture of Hedda"></img>
                 </div>
                 <h3>Hedda Olimb</h3>
@@ -68,8 +62,8 @@ class Projectinfo extends Component {
                     I have experience with HTML, CSS and MySql from high school, but I like the frontend and design part
                     within BWU best.</p>
             </div>
-            <div class="personalia-container">
-                <div class="personalia-img">
+            <div className="personalia-container">
+                <div className="personalia-img">
                     <img src={Richard} alt="Picture of Richard"></img>
                 </div>
                 <h3>Richard Langtinn</h3>
@@ -79,8 +73,8 @@ class Projectinfo extends Component {
                     I also have an authorization as a pharmacy technician.
                     I am from Trondheim and my hobbies include video games, cooking, traveling and photography.</p>
             </div>
-            <div class="personalia-container">
-                <div class="personalia-img">
+            <div className="personalia-container">
+                <div className="personalia-img">
                     <img src={Ida} alt="Picture of Ida"></img>
                 </div>
                 <h3>Ida Marie Joakimsen Bakken</h3>
@@ -92,11 +86,7 @@ class Projectinfo extends Component {
             </div>
         </div>
     </div>
-                {/* hide login button if already logged in */}
-                {!this.context.isAuthFunc() &&
-                    <p><Link to="/login">Login</Link></p>
-                }
-            </div>
+</div>
         )
     }
 }

@@ -166,7 +166,7 @@ class UsersInsert extends Component {
                             placeholder='Repeat password'/>
                         </label>
                         
-                        <div class="button">
+                        <div className="button">
                         <input className='submitButton' type='submit' value='Sign up' id='button-primary' />
                         </div>
                     </form>

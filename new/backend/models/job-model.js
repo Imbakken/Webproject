@@ -1,55 +1,77 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 //job schema
-const Job = new Schema({
-    name: {
+var jobSchema = new mongoose.Schema({
+    course: {
+        type: String,
+        validator: value => validator.isURL(value, { protocols: ['http','https','ftp'], require_tld: true, require_protocol: true }),
+        message: 'Must be a URL'
+    },
+    coursename: {
         type: String,
         required: true
     },
-    building: {
-        type: String,
-        enum: ['K-bygget', 'A-bygget', 'G-bygget', 'B-bygget', 'S-bygget', 'H-bygget'],
-        required: true
-    },
-    room: {
+    coursecode: {
         type: String,
         required: true
     },
-    waterschedule: {
-        type: Number,
-        required: true
-    },
-    lastwatered: {
-        type: Date,
-        required: true
-    },
-    nextwatering: {
-        type: Date,
-        required: true
-    },
-    fertilizer: {
+    studytype: {
         type: String,
-        enum: ['Dirt', 'Compost', 'Calcium'],
-        default: 'Dirt'
+        enum: [
+            'Bachelor',
+            'Master',
+            'PhD',
+            'One year programme',
+            'Other',
+        ],
+        required: true,
+        min: 1
     },
-    flags: {
-        type: Number,
-        default: 0
-    },
-    fertilizerschedule: {
-        type: Number,
+    examform: {
+        type: String,
         required: true
     },
-    lastfertilized: {
+    date: {
         type: Date,
         required: true
     },
-    nextfertilizing: {
+    deadline: {
         type: Date,
         required: true
+    },
+    place: {
+        type: String,
+        required: true
+    },
+    tags: {
+        type: String,
+        enum: [
+            "Aesthetics, Fine Art and Music Studies",
+            "Econmics, Management and Administration",
+            "Fisheries",
+            "History, Religion, Culture and Ideas",
+            "Information Technology og informatics",
+            "Languages ans Literature",
+            "Mathematics and Natural Science",
+            "Media Studies and Communication",
+            "Medicine, Health and Social Studies",
+            "Pedagogics",
+            "Social Sciences and Psychology",
+            "Sport Sciences",
+            "Teacher Education",
+            "Technology, Engineering and Architecture",
+        ],
+        required: true,
+        min: 1,
+    },
+    open: {
+        type: Boolean,
+        required: true,
+    },
+    matched: {
+        type: Boolean,
+        required: true,
     }
 });
 
-const JobModel = mongoose.model('jobs', Job);
-module.exports = JobModel;
+module.exports = mongoose.model('jobs', jobSchema);
