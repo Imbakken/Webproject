@@ -30,10 +30,11 @@ After the completion of this course, the students will be able to reflect on the
 * Project work
 * Academic supervision, tutoring and iterative guidance
 
-###  :unlock: Login as a testuser
+###  :unlock: Log in 
 We have made some testusers to test the system. 
 #### Anonymous user: 
 email: anonymous@gmail.com
+</br>
 password: password123
 
 #### Employee user:
