@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatchUp Ex</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navContainer">
+            <div class="nav">
+                <div class="smallogo">
+                    <img src="../assets/illustrations/smalllogo.png" alt="Logo">
+                </div>
+
+                <ul class="navigation-bar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutthepage.html">About the page</a></li>
+                    <li><a href="signin.html">Login</a></li>
+                    <li><a href="signup.html">Sign up</a></li>
+
+                </ul>
+            </div>
+            <div class="src-logout">
+                <form class="searchBox">
+                    <input type="search" class="searchInput" placeholder="Search..." aria-label="Search">
+                </form>
+                <div class="logout">
+                    <ul>
+                        <li><a href="logout.html">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <h1>Delete user account</h1>
+    <div class="admin-grid">
+        <div class="options">
+            <ul class="navigation-bar">
+                <li><a href="createuser.html">Create new user</a></li>
+                <li><a href="updateuser.html">Update user</a></li>
+                <li><a class="current" href="deleteuser.html">Delete user</a></li>
+            </ul>
+        </div>
+        <form class="createUserBox">
+            <div class="formContainer">
+                <div class="formbox">
+                    <div class="formfields">
+                        <label for="delete-id">User ID</label>
+                        <input type="text" id="delete-id" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <button class="signin" id="button-primary" type="submit">Delete account</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

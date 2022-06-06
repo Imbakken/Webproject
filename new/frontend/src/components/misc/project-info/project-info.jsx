@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import Hedda from "../../../assets/illustrations/hedda2.png";
+import Richard from "../../../assets/illustrations/richard.png";
+import Ida from "../../../assets/illustrations/ida2.png";
+import { AuthContext } from '../../../utils/Auth';
+//import './project-info.css';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MatchUp Ex</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
 
-<body>
-    <header>
-        <div class="navContainer">
-            <div class="nav">
-                <div class="smallogo">
-                    <img src="../assets/illustrations/smalllogo.png" alt="Logo">
-                </div>
+class Projectinfo extends Component {
+    static contextType = AuthContext;
 
-                <ul class="navigation-bar">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="signin.html">Login</a></li>
-                    <li><a href="signup.html">Sign up</a></li>
-                    <li><a class="current" href="aboutus.html">About the page</a></li>
-                </ul>
-            </div>
-    </header>
-
-    <h1>About the page</h1>
+    render() {
+        return (
+            <div id="project">
+                 <h1>About the page</h1>
     <div class="about">
         <div class="about-container">
             <p>In this project, we have created a meeting place where teachers can find a second examiner for their
@@ -50,20 +37,20 @@
                 <div class="tools-programming">
                     <h3>Programming languages</h3>
                     <ul class="tool">
-                        <li>html</li>
-                        <li>css</li>
-                        <li>javascript</li>
-                        <li>nodejs</li>
-                        <li>mongodb</li>
-                        <li>express</li>
-                        <li>react</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Node.js</li>
+                        <li>MongoDB</li>
+                        <li>Express.js</li>
+                        <li>React</li>
                     </ul>
                 </div>
                 <div class="tools-design">
                     <h3>Design tool</h3>
                     <ul class="tools">
                         <li>Figma</li>
-                        <li>Indesign</li>
+                        <li>InDesign</li>
                         <li>Illustrator</li>
                     </ul>
                 </div>
@@ -72,7 +59,7 @@
         <div class="aboutus-container">
             <div class="personalia-container">
                 <div class="personalia-img">
-                    <img src="../assets/illustrations/hedda2.png" alt="Picture of Hedda">
+                    <img src={Hedda} alt="Picture of Hedda"></img>
                 </div>
                 <h3>Hedda Olimb</h3>
                 <p>My name is Hedda Olimb, I’m 22 years old from Hadeland, and I’m in my second year of Web Development
@@ -83,7 +70,7 @@
             </div>
             <div class="personalia-container">
                 <div class="personalia-img">
-                    <img src="../assets/illustrations/richard2.png" alt="Picture of Richard">
+                    <img src={Richard} alt="Picture of Richard"></img>
                 </div>
                 <h3>Richard Langtinn</h3>
                 <p>My name is Richard Langtinn. I'm 26 years old and I'm in my second year as a Web Development student
@@ -94,7 +81,7 @@
             </div>
             <div class="personalia-container">
                 <div class="personalia-img">
-                    <img src="../assets/illustrations/ida2.png" alt="Picture of Ida">
+                    <img src={Ida} alt="Picture of Ida"></img>
                 </div>
                 <h3>Ida Marie Joakimsen Bakken</h3>
                 <p>My name is Ida Marie Joakimsen Bakken. I’m 25 years old and I’m in my second year as a Webdevelopment
@@ -105,6 +92,13 @@
             </div>
         </div>
     </div>
-</body>
+                {/* hide login button if already logged in */}
+                {!this.context.isAuthFunc() &&
+                    <p><Link to="/login">Login</Link></p>
+                }
+            </div>
+        )
+    }
+}
 
-</html>
+export default Projectinfo;
