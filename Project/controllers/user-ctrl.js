@@ -172,12 +172,18 @@ getUserById = async (req, res) => {
 
 //retrieving job based on id
 getJobById = async (req, res) => {
-    try {
-    const jobs = await Job.find({ _id: req.params.id });
-    res.json(jobs);
-    } catch (err) {
-    res.json({ message: err });
-  }
+    await Job.findOne({ _id: req.params.id }, (err, job) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err });
+        }
+
+        if (!job) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Job not found` });
+        }
+        return res.status(200).json({ success: true, data: job });
+    }).catch(err => console.log(err));
 };
 
 //retrieving all users

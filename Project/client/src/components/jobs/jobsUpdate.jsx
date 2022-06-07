@@ -28,19 +28,19 @@ class JobsUpdate extends Component {
 
     componentDidMount = async () => {
             const { id } = this.state;
-            const job = await api.getJobById(id);
+            const user = await api.getJobById(id);
             
             this.setState({
-                course: job.data.data.course,
-                coursename: job.data.data.coursename,
-                coursecode: job.data.data.coursecode,
-                studytype: job.data.data.studytype,
-                examform: job.data.data.examform,
-                date: job.data.data.date,
-                deadline: job.data.data.deadline,
-                place: job.data.data.place,
-                tags: job.data.data.tags,
-                apply: job.data.data.apply,  
+                course: user.data.data.course,
+                coursename: user.data.data.coursename,
+                coursecode: user.data.data.coursecode,
+                studytype: user.data.data.studytype,
+                examform: user.data.data.examform,
+                date: user.data.data.date,
+                deadline: user.data.data.deadline,
+                place: user.data.data.place,
+                tags: user.data.data.tags,
+                apply: user.data.data.apply,  
             })
     }
 
@@ -100,18 +100,21 @@ class JobsUpdate extends Component {
         return (
             <>
                  <div className='formbox'>
-                    <h2>Add Job</h2>
+                    <h2>Edit Job</h2>
                     <div className='form'>
                     <form onSubmit={this.handleUpdateJob}>
-                        <label>Course:
-                            <input
-                            name='course'
+                    {this.context.isAdmin &&
+                        <>
+                            <label>Course:</label>
+                            <input 
+                            required
+                            type="text" 
+                            name="course"
                             value={course}
                             onChange={this.handleInputChange}
-                            type='text'
-                            required
-                            placeholder='Link to the course'/>
-                        </label>
+                            />
+                        </>
+                        }
 
                         <label>Course name:
                             <input
