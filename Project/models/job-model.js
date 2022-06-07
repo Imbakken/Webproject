@@ -61,6 +61,7 @@ const Job = new Schema({
             "Teacher Education",
             "Technology, Engineering and Architecture"
         ],
+        required: true
     },
     apply: {
         type: Number,

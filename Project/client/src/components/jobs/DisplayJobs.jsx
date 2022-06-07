@@ -15,7 +15,7 @@ class DisplayJobs extends Component {
             columns: [],
             isLoading: false,
             boxHover: '',
-            sortType: 'apply',
+            sortType: 'date',
             updateJob: false,
             updateId: ''
         }
@@ -71,10 +71,8 @@ class DisplayJobs extends Component {
         for (let i = 0; i < jobs.length; i++){
             job.push(jobs[i]);
         }
-        
-        const sorted = this.sortJobsBy(this.state.sortType);
 
-        return sorted.map((job, index) => {
+        return job.map((job, index) => {
 
            return <div id= "jobCard" key={index} coursecode={`boxHover${index}`} onMouseEnter={ e => this.trueDisplay(e, index)} onMouseLeave={this.falseDisplay}>
                 {this.context.isEmployee && job.apply > 0 && 
@@ -102,29 +100,8 @@ class DisplayJobs extends Component {
         })
     }
 
-    //sorting by either next watering, next fertilizing, room or number of flags
-    sortJobsBy = (sort) => {
 
-        let sorted;
-       
-        if(sort === 'date'){
-            sorted = [...this.state.jobs].sort((a, b) => new Date(a) < new Date(b) ? 1 : -1);
-        } /*
-        else if(sort === 'deadline'){
-            sorted = [...this.state.jobs].sort((a, b) => a.deadline.split('-').join().localeCompare(b.deadline.split('-').join()));
-        }
-        else if(sort === 'tags'){
-            sorted = [...this.state.jobs].sort((a, b) => a.room.localeCompare(b.tags));
-        }*/
-        else if(sort === 'apply') {
-            sorted = [...this.state.jobs].sort((a, b) => b.apply - a.apply);
-        }
 
-        return sorted;
-
-    }
-
-    //notification on top of the page for watering, fertilizing and flags
     notification (job) {
 
         const applied = [];

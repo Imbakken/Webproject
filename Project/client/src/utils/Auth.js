@@ -61,7 +61,6 @@ class AuthProvider extends React.Component {
 
   generateHeaders = () => {
     const response = {};
-    //we read the token from memory and if it is not yet defined, we try with the stored token
     const token = this.state.token || getToken();
 
     if (token) {

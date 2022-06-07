@@ -26,7 +26,7 @@ router.post('/login',
               async (error) => {
                 if (error) return next({error: 'error'});
   
-                const body = { role: user.role, _id: user._id, email: user.email };
+                const body = { role: user.role, _id: user._id, name: user.name, surname: user.surname, email: user.email };
                 const token = jwt.sign({ user: body }, 'supersecret');
   
                 return res.json({ token, body });

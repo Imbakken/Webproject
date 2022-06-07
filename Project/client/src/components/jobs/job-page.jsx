@@ -181,21 +181,19 @@ class Jobpage extends Component {
                         <p>Deadline: {deadline}</p>
                         <p>Place: {place}</p>
                         <p>Tags: {tags}</p>
-                        {!this.context.isEmployee &&
+            
                         <Button
                             id="apply"
                             aria-label="apply"
                             color="primary"   
                             onClick={() => this.applyJob(id)}
-                        >Apply for this job</Button> }
-                        {this.context.isEmployee &&
+                        >Apply for this job</Button> 
                             <Button
                             id="update"
                             aria-label="update"
                             color="primary"
                             onClick={() => this.updateJob()}
                             >Update</Button>
-                         }
                         <Button id="back" href={`/job-overview`}>Back</Button>
                     </figure>
                 </div>

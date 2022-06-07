@@ -1,9 +1,11 @@
 require('dotenv').config();
 
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
+
+const db = require('./db/database');
 
 require('./auth');
 const userRouter = require('./routes/user-router');
@@ -20,18 +22,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-if (process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
-    app.use(cors({ credentials: true, origin: process.env.FRONTENDHOST }));
-  } else {
-    app.use(cors());
-  }
+db.on('error', console.error.bind(console, 'Mongodb connection error:'));
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://idabakken_school:school@schoolwork.nzdyv.mongodb.net/webproject?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to DB!'))
-  .catch(error => console.log(error));
 
 //Checking role
 async function adminAuth(req, res, next) {
@@ -53,6 +45,11 @@ app.use('/admin', passport.authenticate('jwt', { session: false }), adminAuth, a
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({ error: err });
+});
+
+app.use(express.static(path.join(__dirname, "./client/build" )));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/", "index.html"));
 });
 
 

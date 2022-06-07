@@ -4,10 +4,12 @@
   "description": "Webproject",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "heroku-postbuild": "cd run install-client && npm run build",
+    "build": "react-scripts build"
   },
   "engines": {
-    "node": "14.15.4"
+    "node": "17.6.0"
   },
   "author": "Ida",
   "license": "ISC",

@@ -53,7 +53,7 @@ class Login extends Component {
                     <div className='form'>
                     <form onSubmit={this.handleLogIn} method="post">
                     <h2>Log in</h2>
-                    <div class="formfields">
+                    <div className="formfields">
                         <label>Email: 
                         <input required name="email" type="email" value={this.state.email} onChange={this.handleInputChange}/>
                         </label>

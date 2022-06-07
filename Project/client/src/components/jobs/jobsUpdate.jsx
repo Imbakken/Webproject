@@ -204,7 +204,7 @@ class JobsUpdate extends Component {
                         </label>
                         
                         <div className="button">
-                        <input className='submitButton' type='submit' value='Update job' id='button-primary' />
+                        <input className='submit-class' type='submit' value='Update job' id='button-primary' />
                         </div>
                     </form>
                     </div>

@@ -32,11 +32,11 @@ class ActiveUser extends Component {
 
     //displaying in navbar which user is logged in
     render() {
-        const me = this.state.user;
+        const users = this.state.user;
         return (
             <div id="activeUser">
                 <Link to={`/profile`}>
-                <p>{me.name} {me.surname}</p>
+                <p>{users.name} {users.surname}</p>
                 </Link>
             </div>
         )
