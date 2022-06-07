@@ -37,7 +37,7 @@ class Login extends Component {
         const payload = { email, password };
         const response = await this.context.login(payload);
         if(response.token){
-            window.location.href = `/job-overview`;
+            window.location.href = `/profile`;
         }else if(response.error.error === 'error'){
             this.setState({
                 showError: true

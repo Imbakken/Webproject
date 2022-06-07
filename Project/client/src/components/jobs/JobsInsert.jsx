@@ -44,9 +44,9 @@ class JobsInsert extends Component {
     //adding job by sending the data to the back end
     handleSubmit = async (event) => {
         event.preventDefault();
-        const { course, coursecourse, coursecode, studytype, examform, date, deadline, place } = this.state;
+        const { course, coursename, coursecode, studytype, examform, date, deadline, place, tags } = this.state;
 
-        const payload = { course, coursecourse, coursecode, studytype, examform, date, deadline, place };
+        const payload = { course, coursename, coursecode, studytype, examform, date, deadline, place, tags };
 
         if(this.validateInput() === 'fillAllFields'){
             window.alert('Please fill out all the input fields.');
@@ -173,7 +173,7 @@ class JobsInsert extends Component {
                         </label>
 
                         <label>Tag:
-                        <select name='tags' value={this.state.tags} onChange={this.handleInputChange}>
+                        <select name='tags' required value={this.state.tags} onChange={this.handleInputChange}>
                                 <option value='Aesthetics, Fine Art and Music Studies'>Aesthetics, Fine Art and Music Studies</option>
                                 <option value='Econmics, Management and Administration'>Econmics, Management and Administration</option>
                                 <option value='Fisheries'>Fisheries</option>

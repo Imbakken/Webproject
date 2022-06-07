@@ -72,7 +72,7 @@ class DisplayJobs extends Component {
             job.push(jobs[i]);
         }
 
-        return job.map((job, index) => {
+        return jobs.map((job, index)  => {
 
            return <div id= "jobCard" key={index} coursecode={`boxHover${index}`} onMouseEnter={ e => this.trueDisplay(e, index)} onMouseLeave={this.falseDisplay}>
                 {this.context.isEmployee && job.apply > 0 && 
@@ -99,7 +99,6 @@ class DisplayJobs extends Component {
             </div>
         })
     }
-
 
 
     notification (job) {
