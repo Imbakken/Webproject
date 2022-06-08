@@ -10,7 +10,7 @@ class DisplayJobs extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            coursecode: '',
+            coursename: '',
             jobs: [],
             columns: [],
             isLoading: false,
@@ -52,8 +52,8 @@ class DisplayJobs extends Component {
         })
     }
 
-    deleteJob(id, name) {
-        if(window.confirm(`Do you want to delete the job ${name} permanently?`)){
+    deleteJob(id, coursename) {
+        if(window.confirm(`Do you want to delete the job ${coursename} permanently?`)){
             api.deleteJobById(this.context.generateHeaders(), id);
             window.location.reload();
         }
@@ -72,14 +72,16 @@ class DisplayJobs extends Component {
             job.push(jobs[i]);
         }
 
-        return jobs.map((job, index)  => {
+        const sorted = this.sortJobsBy(this.state.sortType);
 
-           return <div id= "jobCard" key={index} coursecode={`boxHover${index}`} onMouseEnter={ e => this.trueDisplay(e, index)} onMouseLeave={this.falseDisplay}>
-                {this.context.isEmployee && job.apply > 0 && 
+        return sorted.map((job, index)  => {
+
+           return <div id= "jobCard" key={index} coursename={`boxHover${index}`} onMouseEnter={ e => this.trueDisplay(e, index)} onMouseLeave={this.falseDisplay}>
+                {job.apply > 0 && 
                     <span className='job-warning' id='warning-count'>{job.apply}</span>
                 }
                <Button onClick={() => this.seeJob(job._id)}>
-                <h3>{job.coursecode}</h3>
+                <h3>{job.coursename}</h3>
                 </Button>
                 
                 {this.context.isEmployee &&
@@ -94,28 +96,41 @@ class DisplayJobs extends Component {
                     id="delete"
                     aria-label="delete"
                     color="secondary"
-                    onClick={() => this.deleteJob(job._id, job.coursecode)}
+                    onClick={() => this.deleteJob(job._id, job.coursename)}
                 >Delete</Button> }
             </div>
         })
+    }
+
+    sortJobsBy = (sort) => {
+
+        let sorted;
+
+        if(sort === 'date'){
+            sorted = [...this.state.jobs].sort((a, b) => (a > b) ? 1 : -1);
+        }
+        else if(sort === 'apply') {
+            sorted = [...this.state.jobs].sort((a, b) => b.apply - a.apply);
+        }
+
+        return sorted;
+
     }
 
 
     notification (job) {
 
         const applied = [];
-        const jobCoursecode = [];
 
         for (let i = 0; i < job.length; i++){
             
             if(job[i]['apply'] > 0){
-                applied.push(' ' + job[i]['course'] + '(' + job[i]['coursecode'] + ')');
+                applied.push('(' + job[i]['coursecode'] + ')');
             }
         }
         return (
             <div id="notification">
-                {applied.length > 0 && <p>There is {applied.length} applied {applied.length === 1 ? "job" : "jobs"} on campus: {applied.toString()}</p> }
-                <p>{jobCoursecode.toString()}</p>
+                {applied.length > -1 && <p>There is {applied.length} {applied.length === 1 ? "job" : "jobs"} applied for{applied.toString()}</p> }  
             </div>
         );
     }
@@ -138,7 +153,7 @@ class DisplayJobs extends Component {
                     {this.context.isEmployee &&
                     this.notification(this.state.jobs)
                     }
-                    <p> {this.state.jobs.length} jobs are currently on campus.</p>
+                    <p>There are {this.state.jobs.length} jobs in the system right now</p>
                     {this.context.isJob &&
                     <div id='icon-explain'>
                         <div id='apply'>
@@ -150,8 +165,6 @@ class DisplayJobs extends Component {
                     <p>Sort by:</p>
                     <select onChange = {this.change} value={this.state.sortType} id="jobsort">
                         <option value="date">Date</option>
-                        <option value="deadline">Deadline</option>
-                        <option value="tags">Tags</option>
                         <option value="apply">Applies</option>
                     </select>
                     <div id="dispJobs">

@@ -36,10 +36,10 @@ class App extends Component {
     return (
       <div className="App">
         <AuthConsumer>
-          {({ isAuth, isAdmin }) => (
+          {({ isAuth, isAdmin, isEmployee}) => (
             <>
             <header className="App-header">
-              <Nav isAuth={ isAuth } isAdmin= {isAdmin} handleLogOut={this.handleLogOut} />
+              <Nav isAuth={ isAuth } isAdmin= {isAdmin} isEmployee= {isEmployee} handleLogOut={this.handleLogOut} />
             </header>
             <main>
               <Routes>

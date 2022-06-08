@@ -11,9 +11,9 @@ class Jobpage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.match.params.id,
+            id: this.props.id,
             course: '',
-            coursecourse: '',
+            coursename: '',
             coursecode: '',
             studytype: '',
             examform: '',
@@ -30,9 +30,8 @@ class Jobpage extends Component {
     }
 
     componentDidMount = async () => {
-            const { id } = this.state;
 
-            const job = await api.getJobById(id);
+            const job = await api.getAllJobs();
 
             await api.getAllJobs().then(jobs => {
                 this.setState({
@@ -62,7 +61,7 @@ class Jobpage extends Component {
         var options = this.state.allJobs.data;
 
         for(var i = 0; i < options.length; i++) {
-            var opt = options[i]['course'] + ', ' + options[i]['coursecode'];
+            var opt = options[i]['coursename'];
             var value = options[i]['_id'];
             var el = document.createElement("option");
             el.textContent = opt;
@@ -93,9 +92,7 @@ class Jobpage extends Component {
                 })
             }
         }
-        //here you will see the current selected value of the select input
-    }
-
+    } 
 
     handleInputChange(event) {
         const target = event.target;
@@ -123,7 +120,7 @@ class Jobpage extends Component {
     }
 
     //function for adding a flag to the plant
-    flagJob = async (id) => {
+    applyJob = async (id) => {
 
         const { course, coursename, coursecode, studytype, examform, date, place, deadline, tags } = this.state;
 
@@ -159,21 +156,21 @@ class Jobpage extends Component {
                 <div>    
                     <p>Select job:</p>
                     <select id = "selectJob" onChange = {this.onDropdownSelected}>
-                        <option value={this.state.id}>{this.state.course}, {this.state.coursecode}</option>
+                        <option value={this.state.id}></option>
                     </select>
                     <figure id="activeJob">
                         {apply > 0 && 
                         <p>This job has been applied for {apply} {apply === 1 ? 'time' : 'times'}.</p>
                         }
-                        {this.context.isEmployee && apply > 0 &&
+                        {apply > 0 &&
                         <Button
                         id="remove-apply"
                         aria-label="remove-apply"
                         color="primary"
                         onClick={() => this.removeApply(id)}
                         >Remove apply</Button> }
-                    <h2>{course}</h2>
-                        <p>Coursename: {coursename}</p>
+                        <h2>{coursename}</h2>
+                        <p>Link: {course}</p>
                         <p>Coursecode: {coursecode}</p>
                         <p>Studytype: {studytype}</p>
                         <p>Examform: {examform}</p>
@@ -181,20 +178,23 @@ class Jobpage extends Component {
                         <p>Deadline: {deadline}</p>
                         <p>Place: {place}</p>
                         <p>Tags: {tags}</p>
-            
+                        {this.context.isEmployee &&
                         <Button
                             id="apply"
                             aria-label="apply"
                             color="primary"   
                             onClick={() => this.applyJob(id)}
                         >Apply for this job</Button> 
-                            <Button
+                        }  
+                        {this.context.isEmployee &&
+                        <Button
                             id="update"
                             aria-label="update"
                             color="primary"
                             onClick={() => this.updateJob()}
-                            >Update</Button>
-                        <Button id="back" href={`/job-overview`}>Back</Button>
+                        >Update</Button>}
+                      <Button id="back" href={`/job-overview`}>Back</Button>
+    
                     </figure>
                 </div>
                 }

@@ -34,6 +34,7 @@ createUser = async (req, res) => {
 }
 
 //inserting job to database 
+
 createJob = async (req, res) => {
     if(!req.body){
         return res.status(400).json({
@@ -60,162 +61,155 @@ createJob = async (req, res) => {
             error: 'Job already exists in database'
         });
     } 
-}
+} 
+
+/*
+createJob = async (req, res) => {
+    
+    
+    try {
+      const job = await Job.create({
+        course: req.body.course,
+        coursename: req.body.coursename,
+        coursecode: req.body.coursecode,
+        studytype: req.body.studytype,
+        examform: req.body.examform,
+        date: req.body.date,
+        deadline: req.body.deadline,
+        place: req.body.place,
+        tags: req.body.tags,
+        apply: req.body.apply
+      });
+      res.status(201).json(job);
+    } catch (error) {
+      console.log(error.message);
+      res.status(400).json(error.message);
+    }
+  };
+  */
+
 
 //updating user
-updateUser = async (req, res) => {
-    const body = req.body;
-    const id = req.params.id;    
-    const update = { name: body.name, surname: body.surname, email: body.email, role: body.role };  
-
-    if (body) {
-        await User.updateOne({ _id: id }, { $set: update}, function (err, user) {
-            if(user){
-                return res.status(200).json({
-                    message: 'User updated successfully!',
-                    user: user
-                });
-            }else if (err) {
-                return res.status(400).json({
-                    message: 'An error occured'
-                });
-            }
-        });
+updateUser= async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            name: req.body.name, 
+            surname: req.body.surname, 
+            email: req.body.email, 
+            role: req.body.role 
+        }
+      );
+      res.status(200).json(user);
+    } catch (error) {
+      console.log(error.message);
+      res.status(404).json("Id not found");
     }
-    else {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide a body to update',
-        });
-    }
-    
-};
+  };
 
 //updating job
-updateJob = async (req, res) => {
-    const body = req.body;
-    const id = req.params.id;
-
-    const update = { course: body.course, coursename: body.coursename, coursecode: body.coursecode, studytype: body.studytype, examform: body.examform, date: body.date, deadline: body.deadline, place: body.place, tags: body.tags, apply: body.apply};  
-
-    if (body) {
-        await Job.updateOne({ _id: id }, { $set: update}, function (err, job) {
-            if(job){
-                return res.status(200).json({
-                    message: 'Job updated successfully!',
-                    job: job
-                });
-            }else if (err) {
-                return res.status(400).json({
-                    message: 'An error occured'
-                });
-            }
-        });
+updateJob= async (req, res) => {
+    try {
+      const job = await Job.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            course: req.body.course, 
+            coursename: req.body.coursename, 
+            coursecode: req.body.coursecode, 
+            studytype: req.body.studytype, 
+            examform: req.body.examform, 
+            date: req.body.date, 
+            deadline: req.body.deadline, 
+            place: req.body.place, 
+            tags: req.body.tags, 
+            apply: req.body.apply
+        }
+      );
+      res.status(200).json(job);
+    } catch (error) {
+      console.log(error.message);
+      res.status(404).json("Id not found");
     }
-    else {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide a body to update',
-        });
-    }
-};
+  };
 
 //deleting user
 deleteUser = async (req, res) => {
-    await User.findOneAndDelete({ _id: req.params.id }, (err, user) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-
-        if (!user) {
-            return res
-                .status(404)
-                .json({ success: false, error: `User not found` });
-        }
-
-        return res.status(200).json({ success: true, data: user });
-    }).catch(err => console.log(err));
+    try {
+    const user = await User.findOne({ _id: req.params.id });
+        await user.delete();
+        res.status(200).json({ success: true, data: user });
+    } catch (err) {
+        console.log(err.message);
+        res.status(404).json("Id not found");
+    }
 };
 
 //deleting job
 deleteJob = async (req, res) => {
-    await Job.findOneAndDelete({ _id: req.params.id }, (err, job) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-
-        if (!job) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Job not found` });
-        }
-
-        return res.status(200).json({ success: true, data: job });
-    }).catch(err => console.log(err));
+    try {
+    const job = await Job.findOne({ _id: req.params.id });
+        await job.delete();
+        res.status(200).json({ success: true, data: job });
+    } catch (err) {
+        console.log(err.message);
+        res.status(404).json("Id not found");
+    }
 };
 
 //retrieving user based on id
 getUserById = async (req, res) => {
-    await User.findOne({ _id: req.params.id }, (err, user) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-
-        if (!user) {
-            return res
-                .status(404)
-                .json({ success: false, error: `User not found` });
-        }
-        return res.status(200).json({ success: true, data: user });
-    }).catch(err => console.log(err));
-};
+    try {
+    const user = await User.findOne({ _id: req.params.id });
+        res.status(200).json({ success: true, data: user });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err });
+    }
+    };
 
 //retrieving job based on id
 getJobById = async (req, res) => {
-    await Job.findOne({ _id: req.params.id }, (err, job) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-
-        if (!job) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Job not found` });
-        }
-        return res.status(200).json({ success: true, data: job });
-    }).catch(err => console.log(err));
-};
+    try {
+    const job = await Job.findOne({ _id: req.params.id });
+        res.status(200).json({ success: true, data: job });
+    } catch (err) {
+        res.status(400).json({ success: false, message: err });
+    }
+    };
 
 //retrieving all users
 getUsers = async (req, res) => {
-    await User.find({}, (err, users) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-        if (!users.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `User not found` });
-        }
+    try {
+      const users = await User.find();
+  
+      if (users.length !== 0) {
         return res.status(200).json({ success: true, data: users });
-    }).catch(err => console.log(err));
-};
+      } else {
+        res.status(404);
+        throw new Error("Users not found");
+      }
+  } catch (err) {
+      res.status(400).json({ success: false, message: err });
+    }
+  };
+
 
 //retrieving all jobs
 getJobs = async (req, res) => {
-    
-    await Job.find({}, (err, jobs) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-        if (!jobs.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Job not found` });
-        }
+    try {
+      const jobs = await Job.find();
+  
+      if (jobs.length !== 0) {
         return res.status(200).json({ success: true, data: jobs });
-    }).catch(err => console.log(err));
-};
+      } else {
+        res.status(404);
+        throw new Error("Jobs not found");
+      }
+  } catch (err) {
+      res.status(400).json({ success: false, message: err });
+    }
+  };
+
 
 //sending reset password email with unique link
 forgotPassword = async (req, res)=> {

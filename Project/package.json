@@ -9,7 +9,7 @@
     "build": "react-scripts build"
   },
   "engines": {
-    "node": "17.6.0"
+    "node": ">17.6.0"
   },
   "author": "Ida",
   "license": "ISC",
