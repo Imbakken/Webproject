@@ -22,6 +22,7 @@ import UsersInsert from './components/admin/UsersInsert';
 import Home from './components/misc/homepage';
 import StatusCard from './components/misc/statuscard';
 
+
 class App extends Component {
 
   constructor(props) {
@@ -49,16 +50,14 @@ class App extends Component {
                 <Route path="/signup" element = {<UsersInsert />} />
                 <Route path="/forgotpassword" element = {<ForgotPassword />} />
                 <Route path="/reset/:token" element = {<ResetPassword />} />
-                
+                <Route path="/job-overview" element = {<Joboverview/>}/>
+
               {/* Private routes only for logged in users */}
               <Route element={<PrivateRoute />}>
                   <Route path="/profile" element = {<UserProfile />} />
               </Route>
               <Route element={<PrivateRoute />}>
                   <Route path="/profile/update" element = {<UpdateSelf />} />
-              </Route>
-              <Route element={<PrivateRoute />}>
-                  <Route path="/job-overview" element = {<Joboverview/>}/>
               </Route>
               <Route element={<PrivateRoute />}>
                   <Route path="/job-page/:id" element = {<Jobpage/>}/>

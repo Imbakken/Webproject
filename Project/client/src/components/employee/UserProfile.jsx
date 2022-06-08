@@ -34,9 +34,12 @@ class UserProfile extends Component {
     dispUser = () => {
         const me = this.state.user;
            return <div id="me">
-                <h5>{me.name} {me.surname}</h5>
+                <h2>{me.name} {me.surname}</h2>
                 <p>Email: {me.email}</p>
                 <p>Role: {me.role}</p>
+                <p>Description: {me.description}</p>
+                <p>Workplace: {me.workplace}</p>
+                <p>Experience: {me.experience}</p>
                 <Link to = {`/profile/update`}>
                     <Button
                         id="update"
@@ -51,7 +54,7 @@ class UserProfile extends Component {
     render() {
         return (
                 <section id="myProfile">
-                    <h2>Your profile</h2>
+                    <h1>Your profile</h1>
                     <div id="dispUsers">
                     {this.dispUser()}
                     </div>

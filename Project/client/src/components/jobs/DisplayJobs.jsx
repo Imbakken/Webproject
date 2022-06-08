@@ -130,7 +130,7 @@ class DisplayJobs extends Component {
         }
         return (
             <div id="notification">
-                {applied.length > -1 && <p>There is {applied.length} {applied.length === 1 ? "job" : "jobs"} applied for{applied.toString()}</p> }  
+                {applied.length > -1 && <p>There are {applied.length} {applied.length === 1 ? "job" : "jobs"} applied for.</p> }  
             </div>
         );
     }
@@ -148,33 +148,28 @@ class DisplayJobs extends Component {
             {!this.state.updateJob&&
                 <>
                 <h2>Overview of all jobs</h2>
-                
                 <div id="alljobs">
-                    {this.context.isEmployee &&
+                    {this.context.isAuth &&
                     this.notification(this.state.jobs)
                     }
                     <p>There are {this.state.jobs.length} jobs in the system right now</p>
-                    {this.context.isJob &&
-                    <div id='icon-explain'>
-                        <div id='apply'>
-                            <span id='warning-count-regular'>1</span>
-                            <p>Number of applies on the job.</p>
-                        </div>
-                    </div>
-                    }
-                    <p>Sort by:</p>
+                    {this.context.isEmployee &&
+                    <label>Sort by:
                     <select onChange = {this.change} value={this.state.sortType} id="jobsort">
                         <option value="date">Date</option>
                         <option value="apply">Applies</option>
                     </select>
+                    </label>
+                    }
+                    {this.context.isEmployee &&
                     <div id="dispJobs">
                         {this.dispJobs(this.state.jobs)}
                     </div>
+                    }
                 </div>
                 </>}
                 {this.state.updateJob &&
-                    <JobsUpdate id={ this.state.updateId }/>
-                }
+                <JobsUpdate id={ this.state.updateId }/>}
                 </>
             )
         }

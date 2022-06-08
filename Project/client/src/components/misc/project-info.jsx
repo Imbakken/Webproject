@@ -4,7 +4,6 @@ import Richard from "../../assets/richard.png";
 import Ida from "../../assets/ida2.png";
 
 class Projectinfo extends Component {
-
     render() {
         return (
             <div id="project">

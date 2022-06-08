@@ -14,12 +14,12 @@ createUser = async (req, res) => {
         });
     }    
     
-    const { name, surname, email, role, password } = req.body;
+    const { name, surname, email, role, password, decription, workplace, experience } = req.body;
 
     let checkEmail = await User.exists({ email });
 
     if (!checkEmail) {
-        const user = await User.create({ name, surname, email, role, password });
+        const user = await User.create({ name, surname, email, role, password, decription, workplace, experience });
 
         return res.status(201).json({
             message: 'User added successfully',
@@ -63,32 +63,6 @@ createJob = async (req, res) => {
     } 
 } 
 
-/*
-createJob = async (req, res) => {
-    
-    
-    try {
-      const job = await Job.create({
-        course: req.body.course,
-        coursename: req.body.coursename,
-        coursecode: req.body.coursecode,
-        studytype: req.body.studytype,
-        examform: req.body.examform,
-        date: req.body.date,
-        deadline: req.body.deadline,
-        place: req.body.place,
-        tags: req.body.tags,
-        apply: req.body.apply
-      });
-      res.status(201).json(job);
-    } catch (error) {
-      console.log(error.message);
-      res.status(400).json(error.message);
-    }
-  };
-  */
-
-
 //updating user
 updateUser= async (req, res) => {
     try {
@@ -98,7 +72,10 @@ updateUser= async (req, res) => {
             name: req.body.name, 
             surname: req.body.surname, 
             email: req.body.email, 
-            role: req.body.role 
+            role: req.body.role, 
+            decription: req.body.decription,
+            workplace: req.body.workplace,
+            experience: req.body.experience
         }
       );
       res.status(200).json(user);
@@ -209,7 +186,6 @@ getJobs = async (req, res) => {
       res.status(400).json({ success: false, message: err });
     }
   };
-
 
 //sending reset password email with unique link
 forgotPassword = async (req, res)=> {

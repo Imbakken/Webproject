@@ -15,7 +15,10 @@ class UsersUpdate extends Component {
             name: '',
             surname: '',
             email: '',
-            role: ''
+            role: '',
+            description: '',
+            workplace: '',
+            experience: '',
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUpdateUser = this.handleUpdateUser.bind(this);
@@ -29,7 +32,10 @@ class UsersUpdate extends Component {
             name: user.data.data.name,
             surname: user.data.data.surname,
             email: user.data.data.email,
-            role: user.data.data.role
+            role: user.data.data.role,
+            description: user.data.data.description,
+            workplace: user.data.data.workplace,
+            experience: user.data.data.experience,
         })
     }
 
@@ -47,8 +53,8 @@ class UsersUpdate extends Component {
 
         event.preventDefault();
         const id = this.state.id._id;
-        const { name, surname, email, role } = this.state;
-        const payload = { name, surname, email, role };
+        const { name, surname, email, role, description, workplace, experience } = this.state;
+        const payload = { name, surname, email, role, description, workplace, experience };
 
         //Sending authentication header, id and payload to back end function
             await api.updateUserById(this.context.generateHeaders(), id, payload).then(res => {
@@ -56,7 +62,10 @@ class UsersUpdate extends Component {
             this.setState({
                 name: '',
                 surname: '',
-                email: ''
+                email: '',
+                description: '',
+                workplace: '',
+                experience: ''
             })
             window.location.href = `/profile`;
         })   
@@ -65,57 +74,101 @@ class UsersUpdate extends Component {
     
 
     render() {
-        const { name, surname, email, role } = this.state;
+        const { name, surname, email, role, description, workplace, experience } = this.state;
 
         return (
             <>
-            <h2>Edit user:</h2>
-                    <form id="updateSelf" onSubmit={this.handleUpdateUser}>
-                        
-                        <label>First Name:</label>
-                        <input 
-                        required
-                        type="text" 
-                        name="name"
-                        value={name}
-                        onChange={this.handleInputChange}
-                        />
+            <div className='formbox'>
+                <h2>Edit user:</h2>
+                    <div className='form'>
+                        <form id="updateSelf" onSubmit={this.handleUpdateUser}>
+                            
+                            <label>First Name:</label>
+                            <input 
+                            required
+                            type="text" 
+                            name="name"
+                            value={name}
+                            onChange={this.handleInputChange}
+                            placeholder="First Name"
+                            />
 
-                        <label>Last Name:</label>
-                        <input
-                        required 
-                        type="text" 
-                        name="surname" 
-                        value={surname}
-                        onChange={this.handleInputChange}
-                        />
+                            <label>Last Name:</label>
+                            <input
+                            required 
+                            type="text" 
+                            name="surname" 
+                            value={surname}
+                            onChange={this.handleInputChange}
+                            placeholder="Last Name"
+                            />
 
-                        {this.context.isManager &&
-                        <label>Email: 
-                        <input
-                        required 
-                        type="email" 
-                        name="email" 
-                        value={email}
-                        onChange={this.handleInputChange}
-                        /> </label> }
+                            {this.context.isManager &&
+                            <label>Email: 
+                            <input
+                            required 
+                            type="email" 
+                            name="email" 
+                            value={email}
+                            onChange={this.handleInputChange}
+                            placeholder="Email"
+                            /></label> }
 
-                        {this.context.isAdmin &&
-                        <label>
-                        Role: 
-                        <select required name="role" value={role} onChange={this.handleInputChange}>
-                            <option value='employee'>Employee</option>
-                            <option value='admin'>Admin</option>
-                        </select>
-                        </label>
-                        }
-                        <input 
-                        type="submit" 
-                        value="Update user" 
-                        />
+                            {this.context.isAdmin &&
+                            <label>
+                            Role: 
+                            <select required name="role" value={role} onChange={this.handleInputChange}>
+                                <option value='employee'>Employee</option>
+                                <option value='admin'>Admin</option>
+                            </select>
+                            </label>
+                            }
 
-                        <Button href={`/profile`} id="cancel">Cancel</Button>
-                    </form>
+                            {this.context.isEmployee &&
+                            <label>Description:
+                            <textarea
+                            required 
+                            type="text" 
+                            name="description" 
+                            value={description}
+                            onChange={this.handleInputChange}
+                            placeholder= "Enter your description"
+                            rows="3"
+                            /></label>
+                            }
+
+                            {this.context.isEmployee &&
+                            <label>Workplace:
+                            <input
+                            required 
+                            type="text" 
+                            name="workplace" 
+                            value={workplace}
+                            onChange={this.handleInputChange}
+                            placeholder="Workplace"
+                            /></label>
+                            }
+
+                            {this.context.isEmployee &&
+                            <label>Experience:
+                            <input
+                            required 
+                            type="text" 
+                            name="experience" 
+                            value={experience}
+                            onChange={this.handleInputChange}
+                            placeholder="Experience"
+                            /></label>
+                            }
+
+                            <div className="button">
+                            <input className='submitButton' type='submit' value='Update user' id='button-primary' />
+                            </div>
+
+                            <Button href={`/profile`} id="cancel">Cancel</Button>
+                        </form>
+                    </div>
+                </div>
                     </>
         )
     }

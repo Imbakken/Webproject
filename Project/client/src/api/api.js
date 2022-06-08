@@ -16,7 +16,6 @@ export const login = payload => all.post(`/login`, payload);
 export const forgotPassword = payload => all.post(`/forgotpassword`,payload);
 export const resetPassword = payload => all.get(`/reset`, payload);
 export const updatePasswordViaEmail = payload => all.patch(`/updatePasswordViaEmail`, payload);
-
 export const getAllJobs = () => all.get(`/jobs`);
 export const getJobById = id => all.get(`/job/${id}`);
 export const updateJobById = (id, payload) => all.patch(`/job/${id}`, payload);

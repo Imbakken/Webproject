@@ -10,7 +10,7 @@ let auth = React.useContext(AuthContext);
     <>
       {auth.isLoading && <p>Loading</p>}
       {auth.isAdminFunc && (children ? children : <Outlet />)}
-      {!auth.isLoading && !auth.isAdminFunc && <Navigate to="/" state={{ from: location }} replace />}
+      {!auth.isLoading && !auth.isAdminFunc && <Navigate to="/403" state={{ from: location }} replace />}
     </>
   )
 }

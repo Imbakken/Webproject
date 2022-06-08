@@ -23,7 +23,7 @@ function Nav(props) {
                       {!props.isAuth && <li>
                         <Link to="/login">Login</Link>
                       </li>}
-                      {props.isEmployee && <li>
+                      {props.isAuth && <li>
                         <Link to="/job-overview">Job overview</Link>
                       </li>}
                       {props.isEmployee && <li>

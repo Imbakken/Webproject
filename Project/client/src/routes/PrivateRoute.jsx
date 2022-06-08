@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
     <>
       {auth.isLoading && <p>Loading</p>}
       {auth.isAuthFunc && (children ? children : <Outlet />)}
-      {!auth.isLoading && !auth.isAuthFunc && <Navigate to="/" state={{ from: location }} replace />}
+      {!auth.isLoading && !auth.isAuthFunc && <Navigate to="/403" state={{ from: location }} replace />}
     </>
   )
 }

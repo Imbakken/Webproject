@@ -119,7 +119,7 @@ class Jobpage extends Component {
         })
     }
 
-    //function for adding a flag to the plant
+    //function for adding an apply to the job
     applyJob = async (id) => {
 
         const { course, coursename, coursecode, studytype, examform, date, place, deadline, tags } = this.state;
@@ -162,13 +162,14 @@ class Jobpage extends Component {
                         {apply > 0 && 
                         <p>This job has been applied for {apply} {apply === 1 ? 'time' : 'times'}.</p>
                         }
-                        {apply > 0 &&
+                        {this.context.isAdmin && apply > 0 &&
                         <Button
                         id="remove-apply"
                         aria-label="remove-apply"
                         color="primary"
                         onClick={() => this.removeApply(id)}
                         >Remove apply</Button> }
+                        
                         <h2>{coursename}</h2>
                         <p>Link: {course}</p>
                         <p>Coursecode: {coursecode}</p>
