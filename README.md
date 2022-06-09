@@ -1,6 +1,6 @@
 # IDG2671 Webprosjekt 
 ### Group 1: Richard Langtinn, Hedda Olimb and Ida Marie Joakimsen Bakken  :woman: :woman: :man:
-### View the [Project here](Our link here)
+### View the [Project here](https://webprojectnew.herokuapp.com/)
 
 ## :pushpin: About the project
 The goal of the project is to create a system where all employees in the college / university sector will be able to find examiners for upcoming exams. Since the government has decided that there will be a 2-sensor solution. Today's solution is to call around to potential sensors and spend a lot of unnecessary time on it.
