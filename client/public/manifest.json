@@ -9,6 +9,7 @@
     }
   ],
   "start_url": "/",
+  "content_security_policy": "default-src 'self' https://webprojectnew.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

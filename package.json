@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "build": "react-scripts build"
   },
   "engines": {
@@ -28,6 +28,7 @@
     "nodemon": "^2.0.16",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-favicon": "^1.0.0"
   }
 }
