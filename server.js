@@ -47,10 +47,11 @@ app.use((err, req, res, next) => {
     res.json({ error: err });
 });
 
+/*
 app.use(express.static(path.join(__dirname, "client", "build" )));
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+}); */
 
 
 app.listen(port, () => console.log(`Server is up and running on port ${port}`));
