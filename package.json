@@ -11,9 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "render-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
-  "engines": {
-    "node": ">17.6.0"
-  },
+  
   "author": "Ida",
   "license": "ISC",
   "dependencies": {
