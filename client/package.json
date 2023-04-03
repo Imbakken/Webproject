@@ -56,5 +56,5 @@
 "devDependencies": {
   "concurrently": "^7.2.1"
 },
-  "proxy": "http://localhost:5000/"
+  "proxy": "https://idg2671-webproject.onrender.com"
 }

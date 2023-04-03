@@ -47,18 +47,27 @@ app.use((err, req, res, next) => {
     res.json({ error: err });
 });
 
+app.get('/', function(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
+    res.send('cors problem fixed:)');
+});
+
 /*
 app.use(express.static(path.join(__dirname, "client", "build" )));
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-}); */
+}); 
 
 if (process.env.NODE_ENV === 'production') {
     //*Set static folder up in production
     app.use(express.static('client/build'));
 
     app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
-  }
+  }*/
 
 app.listen(port, () => console.log(`Server is up and running on port ${port}`));
 

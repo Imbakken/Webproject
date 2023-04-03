@@ -1,13 +1,13 @@
 import axios from 'axios';
 //creating routes for public, employees and admins to the back end with axios
 const all = axios.create({
-    baseURL:  'http://localhost:5000/all',
+    baseURL:  'https://idg2671-webproject.onrender.com/all',
 });
 const employee = axios.create({
-    baseURL: 'http://localhost:5000/employee',
+    baseURL: 'https://idg2671-webproject.onrender.com/employee',
 });
 const admin = axios.create({
-    baseURL: 'http://localhost:5000/admin',
+    baseURL: 'https://idg2671-webproject.onrender.com/admin',
 });
 
 //sending request to back end with payload, headers for the protected routes, and id where needed
